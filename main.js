@@ -6,10 +6,13 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 //	read the files where the commands are
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-for(const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+const commandFolders = fs.readdirSync('./commands');
+for(const folder of commandFolders) {
+	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+		for(const file of commandFiles) {
+			const command = require(`./commands/${folder}/${file}`);
+			client.commands.set(command.name, command);
+		}
 }
 
 //	commands
@@ -17,26 +20,42 @@ client.on('message', message => {
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
+	const commandName = args.shift().toLowerCase();
+	const command = client.commands.get(commandName);
 
-	//	commands from commands folder are here
-	switch(command) {
+	//	disallow certain commands from being used in DM
+	if(command.guildOnly && message.channel.type === 'dm') {
+		return message.reply('Can\'t use that in DM!');
+	}
+
+	//	command permissions
+	if(command.permissions) {
+		const authorPerms = message.channel.permissionsFor(message.author);
+		if(!authorPerms || !authorPerms.has(command.permissions)) {
+			return message.reply('You do not have the permissions to use that command.');
+		}
+	}
+
+	// all commands are here
+	switch(commandName) {
 		//	tutorial commands
 		case 'help':
-		return client.commands.get('commands').commandsCommand(message);
+		return command.help(message);
 		case 'prefix':
-		return client.commands.get('prefix').prefixCommand(message);
+		return command.prefixCommand(message);
 
 		//	fun commands
 		case 'pingspam':
-		return client.commands.get('pingspam').pingspam(message, args);
+		return command.pingspam(message, args);
+		case 'avatar':
+		return command.avatar(message);
 
-		//	TODO: useful commands to do with web scraper/price database
+		//	TODO: useful commands to do with math operations
+
 
 		//	if they dont put a command
 		default:
-		return message.channel.send('You did not input a valid command!'),
-		client.commands.get('commands').commandsCommand(message);
+		return message.channel.send('You did not input a valid command! Try \'-!help\' to see avalible commands.');
 	}
 });
 

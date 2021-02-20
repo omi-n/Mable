@@ -1,5 +1,7 @@
 module.exports = {
   name: 'pingspam',
+  guildOnly: true,
+  permissions: 'asd',
   pingspam(message, args) {
     if(!message.mentions.users.first()) {
       message.channel.send('You did not pick a user to spam.');

@@ -1,7 +1,7 @@
 ```html
 The current commands are:
 -!help
--!amogus
--!pingspam (WIP)
+-!avatar
+-!pingspam
 -!prefix
 ```
