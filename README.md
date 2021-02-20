@@ -2,9 +2,7 @@
 
 Mable is a work-in-progress discord bot made for my personal use.
 
-There are many illogical features that may not seem very useful at
-first, but these are all features that I find useful in a discord
-bot.
+There are many illogical features that may not seem very useful.
 
 ## Planned Features
 
