@@ -4,7 +4,7 @@ Mable is a work-in-progress discord bot made for my personal use.
 
 There are many illogical features that may not seem very useful.
 
-## Planned Features
+## Planned Features / To do
 
 Math operation compatibility with numbers.js
 
