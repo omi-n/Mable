@@ -17,3 +17,5 @@ Price Checkers for certain items on Newegg and Amazon.
 Server management features (like every other discord bot)!
 
 Music.
+
+fix aliases (oops)
