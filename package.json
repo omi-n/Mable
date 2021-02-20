@@ -1,0 +1,16 @@
+{
+  "name": "mable",
+  "version": "1.0.0",
+  "description": "A discord bot by RQuit/Nabil, mainly meant for personal use.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rquit/nabil",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "eslint": "^7.20.0",
+    "scrape-newegg": "^1.3.4"
+  }
+}

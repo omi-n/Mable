@@ -1,0 +1,7 @@
+```html
+The current commands are:
+-!help
+-!amogus
+-!pingspam (WIP)
+-!prefix
+```
