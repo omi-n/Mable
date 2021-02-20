@@ -30,8 +30,6 @@ client.on('message', message => {
 		//	fun commands
 		case 'pingspam':
 		return client.commands.get('pingspam').pingspam(message, args);
-		case 'amogus':
-		return client.commands.get('amogus').amogus(message);
 
 		//	TODO: useful commands to do with web scraper/price database
 
