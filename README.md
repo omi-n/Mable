@@ -1,4 +1,4 @@
-# This project is currently a work in progress.
+# This project is currently a (VERY) early work in progress.
 
 Mable is a work-in-progress discord bot made for my personal use.
 
