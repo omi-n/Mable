@@ -50,8 +50,9 @@ client.on('message', message => {
 		case 'avatar':
 		return command.avatar(message);
 
-		//	TODO: useful commands to do with math operations
-
+		//	useful commands to do with admin operations
+		case 'kick':
+		return command.kickUser(message, args);
 
 		//	if they dont put a command
 		default:
