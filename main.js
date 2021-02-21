@@ -23,6 +23,11 @@ client.on('message', message => {
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName);
 
+	//	if they literally put in nothing
+	if(!commandName) {
+		return message.reply('You did not input a valid command! Try \'-!help\' to see avalible commands.');
+	}
+
 	//	disallow certain commands from being used in DM
 	if(command.guildOnly && message.channel.type === 'dm') {
 		return message.reply('Can\'t use that in DM!');
@@ -36,7 +41,7 @@ client.on('message', message => {
 		}
 	}
 
-	// all commands are here
+	//	all commands are here
 	switch(commandName) {
 		//	tutorial commands
 		case 'help':
@@ -53,8 +58,16 @@ client.on('message', message => {
 		//	useful commands to do with admin operations
 		case 'kick':
 		return command.kickUser(message, args);
+		case 'ban':
+		return command.banUser(message, args);
+		case 'unban':
+		return command.unbanUser(message, args);
+
+		// music bot TODO
 
 		//	if they dont put a command
+		case undefined:
+		return message.reply('You did not input a valid command! Try \'-!help\' to see avalible commands.');
 		default:
 		return message.channel.send('You did not input a valid command! Try \'-!help\' to see avalible commands.');
 	}

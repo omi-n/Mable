@@ -1,7 +1,12 @@
-```html
+```
 The current commands are:
 -!help
--!avatar
--!pingspam
+-!avatar <@user>
+-!pingspam <numberPings> <@user>
 -!prefix
+
+Admin Commands:
+-!kick <@user>
+-!ban <@user>
+-!unban <@user>
 ```

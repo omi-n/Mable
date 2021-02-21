@@ -1,24 +1,26 @@
 module.exports = {
-  name: 'kick',
+  name: 'ban',
   guildOnly: true,
-  permissions: 'KICK_MEMBERS',
-  kickUser(message, args) {
+  permissions: 'BAN_MEMBERS',
+  banUser(message, args) {
     if(!message.mentions.users.size) {
-      message.reply('You did not mention any users to kick!');
+      message.reply('You did not mention any users to ban!');
     }
     else {
       const user = message.mentions.users.first();
-      var kickReason = args.slice(1).join(" ");
-      if(!kickReason) kickReason = 'didn\'t say why';
+      var banReason = args.slice(1).join(" ");
+      if(!banReason) banReason = 'didn\'t say why';
       const victim = message.guild.members.resolve(user);
       if(victim) {
         victim
-          .kick(kickReason)
+          .ban({
+            reason: banReason,
+          })
           .then(() => {
-            message.channel.send(`Successfully kicked ${user.tag}.`);
+            message.channel.send(`Successfully banned ${user.tag}.`);
           })
           .catch(err => {
-            message.channel.send('Kick unsuccessful. Go check your code.');
+            message.channel.send('Ban unsuccessful. Go check your code.');
             console.error(err);
           });
       }
