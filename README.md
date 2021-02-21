@@ -10,6 +10,7 @@ You can do this by:
 -going to the discord developer portal
 
 -create application
+
 -add bot
 
 -copy the token
