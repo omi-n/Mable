@@ -45,7 +45,7 @@ client.on('message', message => {
 	switch(commandName) {
 		//	tutorial commands
 		case 'help':
-		return command.help(message);
+		return command.help(message, Discord);
 		case 'prefix':
 		return command.prefixCommand(message);
 
