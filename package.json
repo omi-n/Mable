@@ -1,6 +1,6 @@
 {
   "name": "mable",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A discord bot by RQuit/Nabil, mainly meant for personal use.",
   "main": "main.js",
   "scripts": {
