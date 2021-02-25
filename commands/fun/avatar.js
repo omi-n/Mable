@@ -1,15 +1,23 @@
 module.exports = {
   name: 'avatar',
   aliases: ['av'],
-  avatar(message) {
+  guildOnly: false,
+  avatar(message, Discord) {
+    //  incase no user is mentioned
+    const avatarEmbedSelf = new Discord.MessageEmbed()
+    .setColor('2e45c7')
+    .setTitle(`${message.author.username}'s avatar`)
+    .setImage(`${message.author.displayAvatarURL({ format: "png", dynamic: true })}`);
     if(!message.mentions.users.size) {
-      message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}>`);
+      return message.channel.send(avatarEmbedSelf);
     }
-    else {
-      const point = message.mentions.users.map(user => {
-        return `${user.username}'s avatar: <${user.displayAvatarURL({ format: "png", dynamic: true })}>`;
-      });
-      message.channel.send(point);
-    }
+
+    //  normal usage
+    var user = message.mentions.users.first();
+    const avatarEmbed = new Discord.MessageEmbed()
+    .setColor('2e45c7')
+    .setTitle(`${user.username}'s avatar`)
+    .setImage(`${user.displayAvatarURL({ format: "png", dynamic: true })}`);
+    message.channel.send(avatarEmbed);
   },
 };

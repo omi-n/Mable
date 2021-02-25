@@ -4,6 +4,7 @@ const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 
 //	read the files where the commands are
 const commandFolders = fs.readdirSync('./commands');
@@ -12,6 +13,12 @@ for(const folder of commandFolders) {
 		for(const file of commandFiles) {
 			const command = require(`./commands/${folder}/${file}`);
 			client.commands.set(command.name, command);
+
+			if(command.aliases) {
+				for (const alias of command.aliases) {
+				client.aliases.set(alias, command);
+				}
+			}
 		}
 }
 
@@ -19,9 +26,12 @@ for(const folder of commandFolders) {
 client.on('message', message => {
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
 
+	//	take the prefix out, parse the commands and args
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
-	const command = client.commands.get(commandName);
+	const command = client.commands.get(commandName) ||
+									client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+	if(!command) return;
 
 	//	if they literally put in nothing
 	if(!commandName) {
@@ -29,7 +39,7 @@ client.on('message', message => {
 	}
 
 	//	disallow certain commands from being used in DM
-	if(command.guildOnly && message.channel.type === 'dm') {
+	if(command.guildOnly && message.channel.type == 'dm') {
 		return message.reply('Can\'t use that in DM!');
 	}
 
@@ -45,7 +55,7 @@ client.on('message', message => {
 	switch(commandName) {
 		//	tutorial commands
 		case 'help':
-		return command.help(message, Discord);
+		return command.help(message, Discord, prefix);
 		case 'prefix':
 		return command.prefixCommand(message);
 
@@ -53,7 +63,7 @@ client.on('message', message => {
 		case 'pingspam':
 		return command.pingspam(message, args);
 		case 'avatar':
-		return command.avatar(message);
+		return command.avatar(message, Discord);
 
 		//	useful commands to do with admin operations
 		case 'kick':
@@ -62,6 +72,10 @@ client.on('message', message => {
 		return command.banUser(message, args);
 		case 'unban':
 		return command.unbanUser(message, args);
+		case 'newchannel':
+		return command.newChannel(message, args);
+		case 'delchannel':
+		return command.delChannel(message, args);
 
 		// music bot TODO
 
