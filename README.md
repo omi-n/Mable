@@ -16,13 +16,15 @@ You can do this by:
 
 -copy the token
 
--paste the token and a prefix you want into config
+-paste the token and a prefix you want into a new file called 'config.json'
 
 -go to discord developers api helper
 
 -manage permissions as needed (admin if you're lazy)
 
--invite and use it
+-invite
+
+-install nodeJS+npm and add all the dependencies it tells you to
 
 
 There are many illogical features that may not seem very useful.
