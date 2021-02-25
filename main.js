@@ -57,7 +57,7 @@ client.on('message', message => {
 		case 'help':
 		return command.help(message, Discord, prefix);
 		case 'prefix':
-		return command.prefixCommand(message);
+		return command.prefixCommand(message, prefix);
 
 		//	fun commands
 		case 'pingspam':

@@ -20,7 +20,7 @@ module.exports = {
           })
           .first();
         message.channel.send(`Channel ${channelName} created.`);
-      })
+      });
       return;
     }
     else if(categoryID) {
