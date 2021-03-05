@@ -2,6 +2,14 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const puppet = require('puppeteer');
+const mongo = require('mongoose');
+
+//	connect to database
+mongo.connect('mongodb+srv://bot:discord@discordbot.skes2.mongodb.net/Products',
+{ keepAlive: 1, connectTimeoutMS: 30000, useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => {
+		console.log('Successfully connected to database!');
+	});
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
