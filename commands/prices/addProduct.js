@@ -12,14 +12,16 @@ module.exports = {
   async execute(message, args) {
     var pName;
     var pLink;
-    var pXPath;
+    var pXPath = '//*[@id="price_inside_buybox"]';
     var model = mongo.model('Product', productSchema);
-    if(!args.length || args.length < 3) {
-      return message.channel.send('You must include all 3 indices!');
+    if(!args.length || args.length < 2) {
+      return message.channel.send('You must include at least 2 indices!');
     }
     pName = args[0];
     pLink = args[1];
-    pXPath = args[2];
+    if(args.length == 3) {
+      pXPath = args[2];
+    }
     const example = new model({
       productName: pName,
       productLink: pLink,
