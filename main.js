@@ -2,7 +2,6 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 const puppet = require('puppeteer');
-const mysql = require('mysql2');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -23,15 +22,6 @@ for(const folder of commandFolders) {
 			}
 		}
 }
-//	create connection to database
-const connection = mysql.createConnection({
-	user: 'scrape',
-	password: 'local',
-	database: 'linksxpath',
-});
-if(connection) {
-	console.log('Successfully connected to SQL database.');
-}
 
 //	commands
 client.on('message', message => {
@@ -40,12 +30,10 @@ client.on('message', message => {
 	//	take the prefix out, parse the commands and args
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
-	const command = client.commands.get(commandName) ||
-	client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-	if(!command) return;
+	const command = client.commands.get(commandName);
 
 	//	if they literally put in nothing
-	if(!commandName) {
+	if(!commandName || !command) {
 		return message.reply('You did not input a valid command! Try \'-!help\' to see avalible commands.');
 	}
 
@@ -90,13 +78,13 @@ client.on('message', message => {
 
 		// prices (puppeteer)
 		case 'price':
-		return command.execute(message, args, puppet, mysql);
+		return command.execute(message, args, puppet);
+		case 'addp':
+		return command.execute(message, args);
 
 		//	if they dont put a command
 		case undefined:
 		return message.reply('You did not input a valid command! Try \'-!help\' to see avalible commands.');
-		default:
-		return message.channel.send('You did not input a valid command! Try \'-!help\' to see avalible commands.');
 	}
 });
 
