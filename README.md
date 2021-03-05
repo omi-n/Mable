@@ -32,9 +32,7 @@ There are many illogical features that may not seem very useful.
 ## Planned Features / To do
 
 
-Compatibility with any scraper that can output to a JSON file.
-
-Price Checkers for certain items on Newegg and Amazon.
+IMPORTANT: rewriting scraper.
 
 Music.
 

@@ -2,7 +2,10 @@ module.exports = {
   name: 'avatar',
   aliases: ['av'],
   guildOnly: false,
-  avatar(message, Discord) {
+  execute(message, Discord) {
+        message.channel.send('debug');
+            message.channel.send('debug');
+                message.channel.send('debug');
     //  incase no user is mentioned
     const avatarEmbedSelf = new Discord.MessageEmbed()
     .setColor('2e45c7')

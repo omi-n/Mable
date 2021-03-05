@@ -1,7 +1,8 @@
 module.exports = {
   name: 'help',
+  aliases: ['h'],
   guildOnly: false,
-  help(message, Discord, prefix) {
+  execute(message, Discord, prefix) {
 		const helpEmbed = new Discord.MessageEmbed()
     .setColor('00FF00')
     .setTitle('Commands')

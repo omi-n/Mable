@@ -2,7 +2,7 @@ module.exports = {
   name: 'newchannel',
   guildOnly: true,
   permissions: 'MANAGE_CHANNELS',
-  newChannel(message, args) {
+  execute(message, args) {
     //  args[0] is the name of the channel while args[1] is the categoryID
     const name = args[0];
     const categoryID = args[1];

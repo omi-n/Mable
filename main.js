@@ -1,6 +1,8 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
+const puppet = require('puppeteer');
+const mysql = require('mysql2');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -20,6 +22,15 @@ for(const folder of commandFolders) {
 				}
 			}
 		}
+}
+//	create connection to database
+const connection = mysql.createConnection({
+	user: 'scrape',
+	password: 'local',
+	database: 'linksxpath',
+});
+if(connection) {
+	console.log('Successfully connected to SQL database.');
 }
 
 //	commands
@@ -55,29 +66,31 @@ client.on('message', message => {
 	switch(commandName) {
 		//	tutorial commands
 		case 'help':
-		return command.help(message, Discord, prefix);
+		return command.execute(message, Discord, prefix);
 		case 'prefix':
-		return command.prefixCommand(message, prefix);
+		return command.execute(message, prefix);
 
 		//	fun commands
 		case 'pingspam':
-		return command.pingspam(message, args);
+		return command.execute(message, args);
 		case 'avatar':
-		return command.avatar(message, Discord);
+		return command.execute(message, Discord);
 
 		//	useful commands to do with admin operations
 		case 'kick':
-		return command.kickUser(message, args);
+		return command.execute(message, args);
 		case 'ban':
-		return command.banUser(message, args);
+		return command.execute(message, args);
 		case 'unban':
-		return command.unbanUser(message, args);
+		return command.execute(message, args);
 		case 'newchannel':
-		return command.newChannel(message, args);
+		return command.execute(message, args);
 		case 'delchannel':
-		return command.delChannel(message, args);
+		return command.execute(message, args);
 
-		// music bot TODO
+		// prices (puppeteer)
+		case 'price':
+		return command.execute(message, args, puppet, mysql);
 
 		//	if they dont put a command
 		case undefined:

@@ -4,12 +4,19 @@
   "description": "A discord bot by RQuit/Nabil, mainly meant for personal use.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./main.js",
+    "start": "node ./main.js"
   },
   "author": "rquit/nabil",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "eslint": "^7.20.0"
+    "eslint": "^7.20.0",
+    "ffmpeg": "0.0.4",
+    "mysql2": "^2.2.5",
+    "opusscript": "0.0.8",
+    "puppeteer": "^8.0.0",
+    "ytdl-core": "^4.5.0"
   }
 }

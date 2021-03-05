@@ -2,7 +2,7 @@ module.exports = {
   name: 'kick',
   guildOnly: true,
   permissions: 'KICK_MEMBERS',
-  kickUser(message, args) {
+  execute(message, args) {
     if(!message.mentions.users.size) {
       message.reply('You did not mention any users to kick!');
     }

@@ -2,7 +2,7 @@ module.exports = {
   name: 'ban',
   guildOnly: true,
   permissions: 'BAN_MEMBERS',
-  banUser(message, args) {
+  execute(message, args) {
     if(!message.mentions.users.size) {
       message.reply('You did not mention any users to ban!');
     }

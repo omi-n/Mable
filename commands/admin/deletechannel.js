@@ -2,7 +2,7 @@ module.exports = {
   name: 'delchannel',
   guildOnly: true,
   permissions: 'MANAGE_CHANNELS',
-  delChannel(message, args) {
+  execute(message, args) {
     //  fetch channels
     const channel = message.guild.channels.cache
       .filter((channel) => {
