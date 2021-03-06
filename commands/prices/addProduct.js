@@ -1,8 +1,8 @@
 const mongo = require('mongoose');
 const productSchema = new mongo.Schema({
-    productName: String,
-    productLink: String,
-    productXPath: String,
+  productName: String,
+  productLink: String,
+  productXPath: String,
 });
 
 module.exports = {
@@ -14,12 +14,12 @@ module.exports = {
     var pLink;
     var pXPath = '//*[@id="price_inside_buybox"]';
     var model = mongo.model('Product', productSchema);
-    if(!args.length || args.length < 2) {
+    if (!args.length || args.length < 2) {
       return message.channel.send('You must include at least 2 indices!');
     }
     pName = args[0];
     pLink = args[1];
-    if(args.length == 3) {
+    if (args.length == 3) {
       pXPath = args[2];
     }
     const example = new model({

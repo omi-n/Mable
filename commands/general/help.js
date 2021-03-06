@@ -17,6 +17,8 @@ module.exports = {
       { name: `${prefix}unban <@userID>`, value: '(Requires admin) Unbans a user.' },
       { name: `${prefix}newchannel <new channel name> <optional: channel section>`, value: '(Requires admin) Creates a new channel.' },
       { name: `${prefix}delchannel <target channel name>`, value: '(Requires admin) Deletes a channel.' },
+      { name: `${prefix}price <name>`, value: 'Fetches the price and details of an item.' },
+      { name: `${prefix}addp <itemName> <itemLink> <itemXPath(price)>`, value: 'Adds item to scraper database. If no item xpath, default to Amazon.' },
     );
 
     message.channel.send(helpEmbed);
