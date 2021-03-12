@@ -16,7 +16,6 @@
     "ffmpeg": "0.0.4",
     "mongoose": "^5.11.18",
     "opusscript": "0.0.8",
-    "package.json": "^2.0.1",
     "puppeteer": "^8.0.0",
     "ytdl-core": "^4.5.0"
   }
