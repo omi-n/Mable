@@ -7,6 +7,8 @@ const {
 const puppet = require('puppeteer');
 const mongo = require('mongoose');
 
+const port = process.env.PORT || 8080;
+
 //	connect to database
 mongo.connect('mongodb+srv://bot:discord@discordbot.skes2.mongodb.net/Products', {
 		keepAlive: 1,
