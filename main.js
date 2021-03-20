@@ -69,11 +69,15 @@ client.on('message', message => {
 
 	//	all commands are here
 	switch (commandName) {
-		//	tutorial commands
+		//	general commands
 		case 'help':
 			return command.execute(message, Discord, prefix);
 		case 'prefix':
 			return command.execute(message, prefix);
+		case 'calc':
+			return command.execute(message, Discord);
+		case 'info':
+			return command.execute(message, Discord);
 
 			//	fun commands
 		case 'pingspam':
