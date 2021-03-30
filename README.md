@@ -16,7 +16,7 @@ You can do this by:
 
 -copy the token
 
--paste the token and a prefix you want into a new file called 'config.json'
+-paste the token and a prefix you want into a new file called `config.json`
 
 -go to discord developers api helper
 
@@ -24,7 +24,7 @@ You can do this by:
 
 -invite
 
--install nodeJS+npm and add all the dependencies it tells you to
+-install nodeJS+npm and do `npm install`
 
 
 There are many illogical features that may not seem very useful.
