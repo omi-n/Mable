@@ -37,3 +37,5 @@ IMPORTANT: rewriting scraper.
 Music.
 
 fix aliases (oops)
+
+# IMPORTANT: Stopped developing this for FOR NOW. Working on other projects.
