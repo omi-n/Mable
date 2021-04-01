@@ -51,7 +51,7 @@ client.on('message', message => {
 
 	//	if they literally put in nothing
 	if (!commandName || !command) {
-		return message.reply('You did not input a valid command! Try \'-!help\' to see avalible commands.');
+		return message.reply('You did not input a valid command! Try \'${prefix}help\' to see avalible commands.');
 	}
 
 	//	disallow certain commands from being used in DM
