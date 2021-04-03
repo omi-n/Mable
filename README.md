@@ -8,26 +8,54 @@ If you want to use it, go right ahead. Just host it yourself.
 
 You can do this by:
 
--going to the discord developer portal
+1. going to the [discord developer portal](https://discord.com/developers/)
 
--create application
+2. create application
 
--add bot
+3. add bot
 
--copy the token
+4. copy the token
 
--paste the token and a prefix you want into a new file called `config.json`
+5. paste the token and a prefix you want into a new file in the same directory as main.js called `config.json`
 
--go to discord developers api helper
+6. go to discord developers [permissions calculator](https://discordapi.com/permissions.html)
 
--manage permissions as needed (admin if you're lazy)
+7. manage permissions as needed (admin if you're lazy)
+      - I would suggest only picking out of the white text ones.
 
--invite
+8. invite
 
--install nodeJS+npm and do `npm install`
+9. install [nodeJS](https://nodejs.org/en/) and run `npm install`
 
 
-There are many illogical features that may not seem very useful.
+## Features
+
+
+```
+help: brings up a list of bot commands
+
+avatar: displays a user's avatar
+
+prefix: used for testing the bot
+
+pingspam: (requires admin) spam pings a user
+
+kick: (requires kick permissions) kicks a user from the guild
+
+ban: (requires ban permissions) bans a user from the guild
+
+unban: (requires ban permissions) (requires USERID) unbans a user from the guild
+
+newchannel: (requires create_channel perms) creates a new channel
+
+delchannel: (requires delete_channel perms) deletes an existing channel
+
+price: (WIP) fetches price for a certain item in the database (may not work!)
+
+addp: (WIP) adds an item to the tracked items database (may not work!)
+
+```
+
 
 ## Planned Features / To do
 
