@@ -1,4 +1,5 @@
-# This project is currently a (VERY) early work in progress.
+# This project is NO LONGER being worked on.
+## A new discord bot will be made with less awful code.
 
 
 Mable is a work-in-progress discord bot made for my personal use.
@@ -57,13 +58,3 @@ addp: (WIP) adds an item to the tracked items database (may not work!)
 ```
 
 
-## Planned Features / To do
-
-
-IMPORTANT: rewriting scraper.
-
-Music.
-
-fix aliases (oops)
-
-# IMPORTANT: Stopped developing this for FOR NOW. Working on other projects.
